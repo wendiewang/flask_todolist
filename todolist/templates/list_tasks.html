@@ -1,0 +1,19 @@
+
+
+<html>
+    <title>to/do/list</title>
+    <head>
+            <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA+vr8AJmZ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiIiIiIiIiIiIiIiIiIiIiIhAAAAABIiIhAAAAAAASIiAAACIAAAIiIAACIiAAAiIgACIiIgACIiACIiIiIAIiICIiIiIiAiIgIiIiIiICIiAiIgAiIgIiIAIgAAIgAiIhAAAAAAASIiIQAAAAASIiIiIiIiIiIiIiIiIiIiIiIAAAAAAAAAAA/wAAAf+AAAPnwAADw8AAA4HAAAMAwAACAEAAAgBAAAIYQAADPMAAAf+AAAD/AAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+    <body bgcolor="#FF9999">
+        <h1>to/do/list</h1>
+
+        <ul>
+        {% for task in tasks %}
+        <color="#000000"><li></color><b>task {{ task.id }}:</b> {{ task.title }} {{ task.done }} </li>
+        {% endfor %}
+        </ul>
+        <a href="add"> add more tasks </a>
+
+        </form>
+    </body>
+</html>
