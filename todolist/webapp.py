@@ -8,7 +8,6 @@ def home():
     tasks = Task.query.all()
     return render_template("list_tasks.html", tasks=tasks)
 
-
 @app.route("/add", methods=["GET"])
 def make_task():
     return render_template("add.html")
@@ -21,9 +20,26 @@ def save_task():
 	model.save_all()
 	return redirect(url_for("home"))
 
-@app.route("/edit/<int:task_id>")
+@app.route("/edit/<int:task_id>", methods=["GET"])
 def edit_task(task_id):
-	t = Task.query.get(task_id)
-	t.complete()
+	task = Task.query.get(task_id) 
+	return render_template("edit.html", task=task)
+
+@app.route("/edit/<int:task_id>", methods=["POST"])
+def update_task(task_id):
+	task = Task.query.get(task_id)
+	task.title = request.form['title']
 	model.save_all()
-	return "Task %d is now complete at %r" %(task_id, t.completed_at)
+	return redirect(url_for("home"))
+
+def completed_task(task_id):
+	# task = Task.query.get(task_id)
+	# task.complete()
+
+	#
+	
+	# if task.done == True:
+	# 	task.complete()
+	# if task.done == False:
+	# 	pass
+	return redirect(url_for("home"))

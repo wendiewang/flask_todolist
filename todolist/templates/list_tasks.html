@@ -2,16 +2,42 @@
 
 <html>
     <title>to/do/list</title>
+    <style> 
+        body {
+            background-color:#FF9999;
+            padding: 0;
+            margin: 0;
+        }
+        h1 { 
+            width:100%; 
+            background-color:#000000; 
+            color:#FFFFFF;
+            text-align:left;
+            padding:10px 10px 10px 15px;
+        }
+    </style>
     <head>
             <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA+vr8AJmZ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiIiIiIiIiIiIiIiIiIiIiIhAAAAABIiIhAAAAAAASIiAAACIAAAIiIAACIiAAAiIgACIiIgACIiACIiIiIAIiICIiIiIiAiIgIiIiIiICIiAiIgAiIgIiIAIgAAIgAiIhAAAAAAASIiIQAAAAASIiIiIiIiIiIiIiIiIiIiIiIAAAAAAAAAAA/wAAAf+AAAPnwAADw8AAA4HAAAMAwAACAEAAAgBAAAIYQAADPMAAAf+AAAD/AAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
-    <body bgcolor="#FF9999">
+    <body>
         <h1>to/do/list</h1>
-
-        <ul>
+        <p>
+        <font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
         {% for task in tasks %}
-        <color="#000000"><li></color><b>task {{ task.id }}:</b> {{ task.title }} {{ task.done }} </li>
+        
+        <font color="#FFFFFF">
+        {% if task.done == True %}
+        | &#x2713; | 
+        {% endif %} 
+        {% if task.done == False %}
+        | &#8194;&#8194;| 
+        {% endif %} 
+        </font>
+        {{ task.id }}: <a href="{{ url_for('edit_task', task_id=task.id) }}"> {{ task.title }} </a> <br>
+      
+              
         {% endfor %}
-        </ul>
+
+        <p><font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
         <a href="add"> add more tasks </a>
 
         </form>
