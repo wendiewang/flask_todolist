@@ -10,35 +10,61 @@
         }
         h1 { 
             width:100%; 
-            background-color:#000000; 
+            background-color:#B0B0B0; 
             color:#FFFFFF;
             text-align:left;
             padding:10px 10px 10px 15px;
         }
+
+        div.hearts {
+            padding: 10px;
+            color:#FFFFFF;
+        }
+        div.add {
+            padding: 10px;
+        }
+        ul { 
+            padding: 10px;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
     </style>
     <head>
             <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA+vr8AJmZ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiIiIiIiIiIiIiIiIiIiIiIhAAAAABIiIhAAAAAAASIiAAACIAAAIiIAACIiAAAiIgACIiIgACIiACIiIiIAIiICIiIiIiAiIgIiIiIiICIiAiIgAiIgIiIAIgAAIgAiIhAAAAAAASIiIQAAAAASIiIiIiIiIiIiIiIiIiIiIiIAAAAAAAAAAA/wAAAf+AAAPnwAADw8AAA4HAAAMAwAACAEAAAgBAAAIYQAADPMAAAf+AAAD/AAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+    </head>
+
     <body>
         <h1>to/do/list</h1>
-        <p>
-        <font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
-        {% for task in tasks %}
-        
-        <font color="#FFFFFF">
-        {% if task.done == True %}
-        | &#x2713; | 
-        {% endif %} 
-        {% if task.done == False %}
-        | &#8194;&#8194;| 
-        {% endif %} 
-        </font>
-        {{ task.id }}: <a href="{{ url_for('edit_task', task_id=task.id) }}"> {{ task.title }} </a> <br>
-      
-              
-        {% endfor %}
 
-        <p><font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
-        <a href="add"> add more tasks </a>
+        <div class="hearts">
+            &#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;
+        </div>
+        
+        <ul>
+            {% for task in tasks %}
+            <font color="#FFFFFF">
+            <li> {% if task.done == True %}
+            | &#x2713; | 
+            {% endif %} 
+            {% if task.done == False %}
+            | &#8194;&#8194;| 
+            {% endif %} 
+            </font>
+            <a href="{{ url_for('edit_task', task_id=task.id) }}"> {{ task.title }} </a> 
+            <br>
+            </li>
+          
+            {% endfor %}
+        </ul>
+        <div class="add">
+            <a href="{{ url_for('make_task') }}">add a task</a>
+        </div>
+        <div class="hearts">
+            &#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;
+        </div>
 
         </form>
     </body>

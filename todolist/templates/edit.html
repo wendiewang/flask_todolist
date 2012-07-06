@@ -1,0 +1,19 @@
+<html>
+<title>edit your tasks</title>
+<h1>edit your tasks</h1>
+	<body bgcolor="#999999">
+		<p>
+        <font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
+		<b>Title:</b> {{ task.title }}<br>
+		<b>Notes:</b> {{ task.notes }}<br>
+		<b>Task Created:</b> {{ task.created_at }}<br><br>
+		<form action="{{ url_for('edit_task', task_id=task.id) }}" method="POST">
+		<input type="text" name="title" /><br>
+		<input type="submit"><br><br>
+Is your task complete?<br><br>
+		<a href="{{ url_for('completed_task', task_id=task.id) }}">  Mark task complete </a><br> 
+		<a href=""> Oh wait, it's not done yet! </a> 
+		<p>
+        <font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
+	</body>
+</html>
