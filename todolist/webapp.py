@@ -34,9 +34,10 @@ def update_task(task_id):
 
 @app.route("/complete/<int:task_id>", methods=["POST"])
 def completed_task(task_id):
-	#task = Task.query.get(task_id)
-	task_id = Task.complete() 
-	return redirect(url_for("home"))
+	task = Task.query.get(task_id)
+	task.complete() 
+	model.save_all()
+	return redirect(url_for("home", tasks = task))
 
 # WENDY AND JAMIE, YOU ARE STUCK ON HOW TO MARK A TASK COMPLETE OR INCOMPLETE.
 # learn something quick. PS, don't fret. you are still awesome!

@@ -45,20 +45,26 @@
         
         <ul>
             {% for task in tasks %}
+
             <font color="#FFFFFF">
-            <li> {% if task.done == True %}
+            <!-- {% if task.done == True %}
             | &#x2713; | 
-            {% endif %} 
-            {% if task.done == False %}
+            {% else %} 
             | &#8194;&#8194;| 
-            {% endif %} 
+            {% endif %}  -->
             </font>
-            <a href="{{ url_for('edit_task', task_id=task.id) }}"> {{ task.title }} </a> 
+            <form action="{{ url_for('completed_task', task_id=task.id) }}" method="POST">
+            <li> <input type="checkbox" value={{task.id}} name="completed_task">
+         
+            <a href="{{ url_for('edit_task', task_id=task.id) }}">
+             {{ task.title }} {{ task.done }}
+            </a>
             <br>
             </li>
-          
             {% endfor %}
         </ul>
+            <input type="submit">
+            </form>
         <div class="add">
             <a href="{{ url_for('make_task') }}">add a task</a>
         </div>
@@ -69,3 +75,7 @@
         </form>
     </body>
 </html>
+
+
+
+<a><b><c></c></b></a>
