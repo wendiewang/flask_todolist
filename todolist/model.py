@@ -35,3 +35,7 @@ class Task(db.Model):
     def complete(self):
         self.done = True
         self.completed_at = datetime.datetime.utcnow()
+
+    def incomplete(self):
+        self.done = False
+        self.completed_at = datetime.datetime.utcnow()

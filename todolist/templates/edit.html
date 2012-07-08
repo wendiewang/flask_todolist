@@ -1,17 +1,9 @@
-<html>
-<title>edit your tasks</title>
-<h1>edit your tasks</h1>
-	<body bgcolor="#999999">
-		<p>
-        <font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
-		<b>Title:</b> {{ task.title }}<br>
-		<b>Notes:</b> {{ task.notes }}<br>
-		<b>Task Created:</b> {{ task.created_at }}<br><br>
-		<form action="{{ url_for('edit_task', task_id=task.id) }}" method="POST">
-		<input type="text" name="title" value="{{task.title}}"><br>
-		Is your task complete? <input type="checkbox" value={{task.id}} name="completed_task">
-		<input type="submit"><br><br>
-		<p>
-        <font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
-	</body>
-</html>
+{% extends "list_tasks.html" %}
+{% block body %}
+    <strong>Title:</strong> {{ task.title }}<br>
+    <strong>Notes:</strong> {{ task.notes }}<br>
+    <strong>Task Created:</strong> {{ task.created_at }}<br><br>
+    <form action="{{ url_for('edit_task', task_id=task.id) }}" method="POST">
+    <input type="text" name="title" value="{{task.title}}"><br>
+    <input type="submit" value="edit"><br><br>
+{% endblock %}

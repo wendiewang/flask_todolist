@@ -10,7 +10,8 @@ def home():
 
 @app.route("/add", methods=["GET"])
 def make_task():
-    return render_template("add.html")
+    tasks = Task.query.all()
+    return render_template("add.html", tasks=tasks)
 
 @app.route("/add", methods=["POST"])
 def save_task():
@@ -23,7 +24,8 @@ def save_task():
 @app.route("/edit/<int:task_id>", methods=["GET"])
 def edit_task(task_id):
 	task = Task.query.get(task_id) 
-	return render_template("edit.html", task=task)
+	tasks = Task.query.all()
+	return render_template("edit.html", task=task, tasks=tasks)
 
 @app.route("/edit/<int:task_id>", methods=["POST"])
 def update_task(task_id):
@@ -34,11 +36,18 @@ def update_task(task_id):
 
 @app.route("/complete/<int:task_id>", methods=["POST"])
 def completed_task(task_id):
-	task = Task.query.get(task_id)
+	task = Task.query.get(int(task_id))
 	task.complete() 
 	model.save_all()
-	return redirect(url_for("home", tasks = task))
+	return redirect(url_for("home", task=task))
 
+@app.route("/incomplete/<int:task_id>", methods=["POST"])
+def incompleted_task(task_id):
+	task = Task.query.get(int(task_id))
+	task.incomplete() 
+	model.save_all()
+	return redirect(url_for("home", task=task))
+	
 # WENDY AND JAMIE, YOU ARE STUCK ON HOW TO MARK A TASK COMPLETE OR INCOMPLETE.
 # learn something quick. PS, don't fret. you are still awesome!
 

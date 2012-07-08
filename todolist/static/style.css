@@ -1,0 +1,9 @@
+body        { background-color:#FF9999; padding: 0; margin: 0; }
+h1          { width:100%; background-color:#B0B0B0; color:#FFFFFF; text-align:left;
+              padding:10px 10px 10px 15px;  }
+div.hearts  { padding: 10px; color:#FFFFFF; }
+div.add     { padding: 10px; }
+ul          { padding: 10px; }
+li          { list-style-type: none; } 
+form        { float:left; } 
+a           { text-decoration: none; }

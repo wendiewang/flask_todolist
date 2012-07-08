@@ -1,81 +1,37 @@
+<!doctype html>
+<title>to/do/list</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 
-
-<html>
-    <title>to/do/list</title>
-    <style> 
-        body {
-            background-color:#FF9999;
-            padding: 0;
-            margin: 0;
-        }
-        h1 { 
-            width:100%; 
-            background-color:#B0B0B0; 
-            color:#FFFFFF;
-            text-align:left;
-            padding:10px 10px 10px 15px;
-        }
-
-        div.hearts {
-            padding: 10px;
-            color:#FFFFFF;
-        }
-        div.add {
-            padding: 10px;
-        }
-        ul { 
-            padding: 10px;
-        }
-
-        li {
-            list-style-type: none;
-        }
-
-    </style>
-    <head>
-            <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA+vr8AJmZ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiIiIiIiIiIiIiIiIiIiIiIhAAAAABIiIhAAAAAAASIiAAACIAAAIiIAACIiAAAiIgACIiIgACIiACIiIiIAIiICIiIiIiAiIgIiIiIiICIiAiIgAiIgIiIAIgAAIgAiIhAAAAAAASIiIQAAAAASIiIiIiIiIiIiIiIiIiIiIiIAAAAAAAAAAA/wAAAf+AAAPnwAADw8AAA4HAAAMAwAACAEAAAgBAAAIYQAADPMAAAf+AAAD/AAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
-    </head>
-
-    <body>
-        <h1>to/do/list</h1>
-
-        <div class="hearts">
-            &#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;
-        </div>
-        
+<head>
+<link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA+vr8AJmZ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiIiIiIiIiIiIiIiIiIiIiIhAAAAABIiIhAAAAAAASIiAAACIAAAIiIAACIiAAAiIgACIiIgACIiACIiIiIAIiICIiIiIiAiIgIiIiIiICIiAiIgAiIgIiIAIgAAIgAiIhAAAAAAASIiIQAAAAASIiIiIiIiIiIiIiIiIiIiIiIAAAAAAAAAAA/wAAAf+AAAPnwAADw8AAA4HAAAMAwAACAEAAAgBAAAIYQAADPMAAAf+AAAD/AAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+<h1>to/do/list</h1>
+</head>
+<div class=page>
+    <div class=tasks>
         <ul>
             {% for task in tasks %}
-
-            <font color="#FFFFFF">
-            <!-- {% if task.done == True %}
-            | &#x2713; | 
-            {% else %} 
-            | &#8194;&#8194;| 
-            {% endif %}  -->
-            </font>
             <form action="{{ url_for('completed_task', task_id=task.id) }}" method="POST">
-            <li> <input type="checkbox" value={{task.id}} name="completed_task">
-         
-            <a href="{{ url_for('edit_task', task_id=task.id) }}">
-             {{ task.title }} {{ task.done }}
-            </a>
-            <br>
+            <input type="submit" value="complete">
+            </form>
+             <form action="{{ url_for('incompleted_task', task_id=task.id) }}" method="POST">
+            <input type="submit" value="incomplete">
+            </form>
+            <li>
+            {% if task.done == True %}
+            | &#x2713; | 
+            {% else %}
+            | &#8194;&#8194;|
+            {% endif %}
+            <a href="{{ url_for('edit_task', task_id=task.id) }}"> {{ task.title }} </a> 
             </li>
+            <br>
             {% endfor %}
         </ul>
-            <input type="submit">
-            </form>
-        <div class="add">
-            <a href="{{ url_for('make_task') }}">add a task</a>
-        </div>
-        <div class="hearts">
-            &#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;
-        </div>
-
-        </form>
-    </body>
-</html>
-
-
-
-<a><b><c></c></b></a>
+    </div>
+    <div class="add">
+    <a href="{{ url_for('make_task') }}">add task</a>
+    </div>   
+    <div class="block">
+    {% block body %}{% endblock %}
+    </div>
+</div>

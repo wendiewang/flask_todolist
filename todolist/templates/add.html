@@ -1,16 +1,8 @@
-<html>
-	<head>
-		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA+vr8AJmZ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiIiIiIiIiIiIiIiIiIiIiIhAAAAABIiIhAAAAAAASIiAAACIAAAIiIAACIiAAAiIgACIiIgACIiACIiIiIAIiICIiIiIiAiIgIiIiIiICIiAiIgAiIgIiIAIgAAIgAiIhAAAAAAASIiIQAAAAASIiIiIiIiIiIiIiIiIiIiIiIAAAAAAAAAAA/wAAAf+AAAPnwAADw8AAA4HAAAMAwAACAEAAAgBAAAIYQAADPMAAAf+AAAD/AAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
-		<h2> enter your tasks here </h2>
-	</head>
-    <body bgcolor="#FF9999">
-    	<p>
-        <font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
-		<form action="{{ url_for('save_task') }}" method="POST">
-			<input type="text" name="task_title" /><br>
-			<input type="submit">
-		</form>
-		<p>
-        <font color="#FFFFFF">&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;&#8194;&#9829;</font></p>
-	</body>
-</html>
+{% extends "list_tasks.html" %}
+{% block body %}
+    <form action="{{ url_for('save_task') }}" method="POST">
+    <input type="text" name="task_title" /><br>
+    <input type="submit">
+    </form>
+
+{% endblock %}
